@@ -1,3 +1,6 @@
 <?php
 require('base.php');
-echo $_GET['img'];
+$content = bu::view('preview',array('name'=>$_GET['img']));
+echo bu::view('index',
+              array('title'=>'Image uploader',
+                    'content'=>$content));

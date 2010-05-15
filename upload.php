@@ -28,6 +28,11 @@ function getDirForString($string){
     $s = substr($string,1,1);
     return UPLOAD_PATH.'/'.$f.'/'.$s;
 }
+function getUrlForString($string, $fileType){
+    $f = substr($string,0,1);
+    $s = substr($string,1,1);
+    return '/'.$f.'/'.$s.'/'.$string.'.'.mimeTypeToExtension($fileType);
+}
 function getMimeType_ExtensionTable(){
     return array('image/gif'=>'gif',
                  'image/jpeg'=>'jpg',
@@ -55,6 +60,7 @@ if(!file_exists($finalDir))
     mkdir($finalDir,0775,true);
 move_uploaded_file($tmpName, makePathForString($name,$fileType));
 
-bu::redirect('/links.php?img='.$name);
+
+bu::redirect('/links.php?img='.getUrlForString($name,$fileType));
 
 #$path = makePathForString($name, $fileType);
