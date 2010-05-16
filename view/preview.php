@@ -1,7 +1,7 @@
 <table>
 <tr>
 <td>
-<a href='/img<?php echo $name;?>'>
+<a href='/img<?php echo $name;?>' target='_blank'>
 <img src='/small<?php echo $name;?>'>
 </a>
 </td>
