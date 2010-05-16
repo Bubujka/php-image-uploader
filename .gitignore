@@ -1,3 +1,5 @@
 *.swp
 img/*
 !img/.lock
+small/*
+!small/.lock

@@ -6,6 +6,9 @@
 </head>
 
 <body>
+<div id='content'>
+<h1><?php echo SITE_NAME?></h1>
 <?php echo $content;?>
+</div>
 </body>
 </html>

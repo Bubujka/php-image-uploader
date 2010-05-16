@@ -1,5 +1,9 @@
 *{
-margin: 0px;
-padding: 0px;
+}
+#content{
+    width: 400px;
+    position: relative;
+    left: 50%;
+    margin-left: -200px;
 }
 

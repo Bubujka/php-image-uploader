@@ -26,7 +26,7 @@ function makePathForString($string, $fileType){
 function getDirForString($string){
     $f = substr($string,0,1);
     $s = substr($string,1,1);
-    return UPLOAD_PATH.'/'.$f.'/'.$s;
+    return $f.'/'.$s;
 }
 function getUrlForString($string, $fileType){
     $f = substr($string,0,1);
@@ -53,13 +53,52 @@ function getUniqueName($fileType){
         $name = rand_str(10);
     return $name;
 }
+function getExtensionFromPath($path){
+    $path_parts = pathinfo($path);
+    return $path_parts['extension'];
+}
+function resizeImage($origName, $destName, $maxWidth=200,$maxHeight=200,$quality=85){
+    //http://php.net/manual/en/function.imagecopyresampled.php
+
+    $width = $maxWidth;
+    $height = $maxHeight;
+
+    list($width_orig, $height_orig) = getimagesize($origName);
+
+    $ratio_orig = $width_orig/$height_orig;
+    if(($width_orig < $width) and ($height_orig < $height)){
+        $width = $width_orig;
+        $height = $height_orig;
+    }elseif($width/$height > $ratio_orig) {
+        $width = $height*$ratio_orig;
+    }else{
+        $height = $width/$ratio_orig;
+    }
+
+    $image_p = imagecreatetruecolor($width, $height);
+    $extension = getExtensionFromPath($origName);
+    if($extension == 'jpg')
+        $image = imagecreatefromjpeg($origName);
+    elseif($extension == 'gif')
+        $image = imagecreatefromgif($origName);
+    elseif($extension == 'png')
+        $image = imagecreatefrompng($origName);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+    imagejpeg($image_p, $destName, $quality);
+}
 
 $name = getUniqueName($fileType);
-$finalDir = getDirForString($name);
-if(!file_exists($finalDir))
+$finalDir = UPLOAD_PATH.'/'.getDirForString($name);
+$finalSmallDir = SMALL_IMAGE_PATH.'/'.getDirForString($name);
+if(!file_exists($finalDir)){
     mkdir($finalDir,0775,true);
-move_uploaded_file($tmpName, makePathForString($name,$fileType));
-
+    mkdir($finalSmallDir,0775,true);
+    
+}
+$finalPath = UPLOAD_PATH.'/'.makePathForString($name,$fileType);
+$finalSmallPath = SMALL_IMAGE_PATH.'/'.makePathForString($name,$fileType);
+move_uploaded_file($tmpName, $finalPath);
+resizeImage($finalPath, $finalSmallPath);
 
 bu::redirect('/links.php?img='.getUrlForString($name,$fileType));
 
