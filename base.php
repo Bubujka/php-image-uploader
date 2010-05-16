@@ -10,5 +10,9 @@ define('SMALL_IMAGE_PATH',dirname(__FILE__).'/small');
 define('HTTP_HOST',$_SERVER['HTTP_HOST']);
 
 define('SITE_NAME','Simple image hosting');
+function exception_handler($exception) {
+  echo "Error: " , $exception->getMessage(), "\n";
+}
 
+set_exception_handler('exception_handler');
 require('bu.php');

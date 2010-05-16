@@ -40,11 +40,17 @@ function getMimeType_ExtensionTable(){
 }
 function mimeTypeToExtension($mimeType){
     $data = getMimeType_ExtensionTable();
-    return $data[$mimeType];
+    if(isset($data[$mimeType]))
+        return $data[$mimeType];
+    else
+        return '';
 }
 function extensionToMimeType($extension){
     $data = array_flip(getMimeType_ExtensionTable());
-    return $data[$extension];
+    if(isset($data[$extension]))
+        return $data[$extension];
+    else
+        return '';
 }
 
 function getUniqueName($fileType){
