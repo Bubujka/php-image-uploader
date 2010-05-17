@@ -4,6 +4,9 @@ body{
     background: #e5e5e5;
     font-family: tahoma;
 }
+img{
+    border: 0px;
+}
 #content{
     margin-top: 100px;
     background: white;
@@ -41,4 +44,12 @@ h1{
     position: relative;
     margin-top: 20px;
     left: 140px;
+}
+#previewImage img{
+    background: #fafafa;
+    padding: 10px;
+}
+#previewBlock{
+    text-align: center;
+
 }
