@@ -8,12 +8,12 @@
 </tr>
 <tr>
 <td>
-Original image:<br>
+<?php echo bu::lang('originalImageLegend')?><br>
 <input type'text' 
        class='link_text_field'
        onclick='javascript:highlight(this)' 
        value='http://<?php echo HTTP_HOST;?>/img<?php echo $name;?>'><br>
-Small image:<br>
+<?php echo bu::lang('smallImageLegend')?><br>
 <input type'text' 
        class='link_text_field' 
        onclick='javascript:highlight(this)' 
@@ -23,12 +23,12 @@ Small image:<br>
 $bbCodeLink = htmlspecialchars('[url=http://'.HTTP_HOST.'/img'.$name.'][img]http://'.HTTP_HOST.'/small'.$name.'[/img][/url]');
 $htmlCodeLink = htmlspecialchars('<a href="http://'.HTTP_HOST.'/img'.$name.'"><img src="http://'.HTTP_HOST.'/small'.$name.'"></a>');
 ?>
-BB code:<br>
+<?php echo bu::lang('BBCodeLegend')?><br>
 <input type'text' 
        class='link_text_field' 
        onclick='javascript:highlight(this)' 
        value='<?php echo $bbCodeLink;?>'><br>
-HTML code:<br>
+<?php echo bu::lang('htmlLinkLegend')?><br>
 <input type'text' 
        class='link_text_field' 
        onclick='javascript:highlight(this)' 
