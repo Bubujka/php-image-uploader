@@ -2,7 +2,7 @@
 require('base.php');
 $fileType = $_FILES['img']['type'];
 $tmpName = $_FILES['img']['tmp_name'];
-$allowedExtension = array('gif','jpg','png');
+$allowedExtension = bu::config('rc/allowedExtension');
 
 if(!in_array(mimeTypeToExtension($fileType),$allowedExtension))
     throw new Exception('Wrong image type!');
@@ -54,9 +54,10 @@ function extensionToMimeType($extension){
 }
 
 function getUniqueName($fileType){
-    $name = rand_str(10);
+    $imgNameLangth = bu::config('rc/imgNameLangth');
+    $name = rand_str($imgNameLangth);
     while(file_exists(makePathForString($name,$fileType)))
-        $name = rand_str(10);
+        $name = rand_str($imgNameLangth);
     return $name;
 }
 function getExtensionFromPath($path){
@@ -94,15 +95,15 @@ function resizeImage($origName, $destName, $maxWidth=200,$maxHeight=200,$quality
 }
 
 $name = getUniqueName($fileType);
-$finalDir = UPLOAD_PATH.'/'.getDirForString($name);
-$finalSmallDir = SMALL_IMAGE_PATH.'/'.getDirForString($name);
+$finalDir = bu::config('rc/uploadPath').'/'.getDirForString($name);
+$finalSmallDir = bu::config('rc/smallImgPath').'/'.getDirForString($name);
 if(!file_exists($finalDir)){
     mkdir($finalDir,0775,true);
     mkdir($finalSmallDir,0775,true);
     
 }
-$finalPath = UPLOAD_PATH.'/'.makePathForString($name,$fileType);
-$finalSmallPath = SMALL_IMAGE_PATH.'/'.makePathForString($name,$fileType);
+$finalPath = bu::config('rc/uploadPath').'/'.makePathForString($name,$fileType);
+$finalSmallPath = bu::config('rc/smallImgPath').'/'.makePathForString($name,$fileType);
 move_uploaded_file($tmpName, $finalPath);
 resizeImage($finalPath, $finalSmallPath);
 
