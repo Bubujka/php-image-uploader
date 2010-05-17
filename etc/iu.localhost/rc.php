@@ -1,2 +1,2 @@
 <?php
-$config['siteName'] = 'Image hosting';
+$config['language'] = 'ru';

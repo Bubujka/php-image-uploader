@@ -1,5 +1,5 @@
 <?php
-$config['siteName'] = 'Simple image hosting';
+$config['siteName'] = 'bu::imageHosting';
 $config['allowedExtension'] = array('gif','jpg','png');
 $config['imgNameLangth'] = 10;
 
