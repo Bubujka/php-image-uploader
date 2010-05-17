@@ -9,5 +9,5 @@ $config['smallImgPath'] = BASE_DIRECTORY.'/small';
 $config['maxWidth'] = 200;
 $config['maxHeight'] = 200;
 $config['quality'] = 85;
-
-$config['language'] = 'en';
+// ru, en
+$config['language'] = 'ru';
