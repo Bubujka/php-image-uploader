@@ -1,4 +1,5 @@
 <form  action="/upload.php" method="post" enctype="multipart/form-data">
-    Select a file: <input type="file" name='img'>
-    <input type='submit' value='upload'>
+    <?php echo bu::lang('formSelectLabel')?> <input type="file" name='img'>
+    <br>
+    <input type='submit' id='uploadButton' value='<?php echo bu::lang('formSubmitButton')?>'>
 </form>

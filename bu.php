@@ -19,6 +19,11 @@ class Bu{
         return self::configGet($path);
     }
 
+    public static function lang($key){
+        return self::config('lang/'.bu::config('rc/language').'/'.$key);
+    }
+        
+    
     private static $configArray = array();
     private static function configGet($configFullPath){
         preg_match('@(.+)/([^/]+)@',$configFullPath,$match);

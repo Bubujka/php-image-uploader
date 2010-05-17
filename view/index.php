@@ -20,7 +20,7 @@
         <?php echo $content;?>
     </div>
 
-    <a href='http://bubujka.ru'><img id='bu_logo' src='/public/bu_logo.png'></a>
 </div>
+    <a href='http://bubujka.ru'><img id='bu_logo' src='/public/bu_logo.png'></a>
 </body>
 </html>

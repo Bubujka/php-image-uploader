@@ -12,11 +12,14 @@ body{
     position: relative;
     left: 50%;
     margin-left: -210px;
+    border: 1px solid #cacaca;
 }
 
 #bu_logo{
     position: relative;
-    left: 166px;
+    left: 50%;
+    margin-left: -44px;
+    margin-top: 20px;
 }
 h1{
     font-family: georgia;
@@ -31,4 +34,11 @@ h1{
     width: 360px;
     font-size: 14px;
     padding: 3px 5px;
+}
+
+#uploadButton{
+    width: 100px;
+    position: relative;
+    margin-top: 20px;
+    left: 140px;
 }
