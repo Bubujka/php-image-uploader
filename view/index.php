@@ -16,7 +16,7 @@
 <body>
 <div id='content'>
     <div id='wrapper'>
-        <h1>Simple image hosting</h1>
+        <h1><?php echo bu::config('rc/siteName')?></h1>
         <?php echo $content;?>
     </div>
 
