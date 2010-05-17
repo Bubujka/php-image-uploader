@@ -64,9 +64,15 @@ function getExtensionFromPath($path){
     $path_parts = pathinfo($path);
     return $path_parts['extension'];
 }
-function resizeImage($origName, $destName, $maxWidth=200,$maxHeight=200,$quality=85){
+function resizeImage($origName, $destName, $maxWidth=false,$maxHeight=false,$quality=false){
     //http://php.net/manual/en/function.imagecopyresampled.php
 
+    if(!$maxWidth)
+        $maxWidth = bu::config('rc/maxWidth');
+    if(!$maxHeight)
+        $maxHeight = bu::config('rc/maxHeight');
+    if(!$quality)
+        $quality = bu::config('rc/quality');
     $width = $maxWidth;
     $height = $maxHeight;
 
