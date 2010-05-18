@@ -8,7 +8,8 @@ define('BASE_DIRECTORY',dirname(__FILE__));
 define('HTTP_HOST',$_SERVER['HTTP_HOST']);
 
 function exception_handler($exception) {
-  echo "Error: " , $exception->getMessage(), "\n";
+  ob_end_clean();
+  echo bu::view('error',array('message'=>$exception->getMessage()));
 }
 
 set_exception_handler('exception_handler');
