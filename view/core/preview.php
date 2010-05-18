@@ -2,7 +2,7 @@
 <tr>
 <td>
 <div id='previewBlock'>
-    <a href='/img<?php echo $name;?>' target='_blank' id='previewImage'>
+    <a href='/img<?php echo $name;?>' target='_blank' class='previewImage'>
         <img src='/small<?php echo $name;?>'>
     </a>
 </div>

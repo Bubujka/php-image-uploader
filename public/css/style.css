@@ -45,7 +45,7 @@ h1{
     margin-top: 20px;
     left: 140px;
 }
-#previewImage img{
+.previewImage img{
     background: #fafafa;
     padding: 10px;
 }
