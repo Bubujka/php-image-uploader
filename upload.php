@@ -88,16 +88,13 @@ function resizeImage($origName, $destName, $maxWidth=false,$maxHeight=false,$qua
         $height = $width/$ratio_orig;
     }
 
-    $image_p = imagecreatetruecolor($width, $height);
-    $extension = getExtensionFromPath($origName);
-    if($extension == 'jpg')
-        $image = imagecreatefromjpeg($origName);
-    elseif($extension == 'gif')
-        $image = imagecreatefromgif($origName);
-    elseif($extension == 'png')
-        $image = imagecreatefrompng($origName);
-    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-    imagejpeg($image_p, $destName, $quality);
+    bu::lib('opt/smart_resize_image/smart_resize_image.function');
+    smart_resize_image($origName,
+                       $width, 
+                       $height, 
+                       false, 
+                       $destName,
+                       false);
 }
 
 $name = getUniqueName($fileType);
