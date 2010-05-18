@@ -26,6 +26,9 @@ class Bu{
     public static function lang($key){
         return self::config('lang/'.bu::config('rc/language').'/'.$key);
     }
+    public static function lib($path){
+        require_once('lib/'.$path.'.php');
+    }
         
     
     private static $configArray = array();
