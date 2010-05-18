@@ -22,5 +22,6 @@
 
 </div>
     <a href='http://bubujka.ru'><img id='bu_logo' src='/public/bu_logo.png'></a>
+    <?php echo bu::view('counter');?>
 </body>
 </html>
